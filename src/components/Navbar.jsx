@@ -1,33 +1,56 @@
+import { Link } from 'react-router-dom'
+
 function Navbar() {
-  return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
-      <div className="container">
-        <a className="navbar-brand fw-bold text-dark" href="#">StudentPortal</a>
-        <div className="collapse navbar-collapse">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item"><a className="nav-link" href="#">Dashboard</a></li>
-            <li className="nav-item"><a className="nav-link" href="#">Students</a></li>
-            <li className="nav-item"><a className="nav-link" href="#">Courses</a></li>
-            <li className="nav-item"><a className="nav-link" href="#">Reports</a></li>
-          </ul>
-          <div className="d-flex align-items-center gap-3">
-            <div className="dropdown">
-              <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Settings</a>
-              <ul className="dropdown-menu dropdown-menu-end">
-                <li><a className="dropdown-item" href="#">Profile</a></li>
-                <li><a className="dropdown-item" href="#">Preferences</a></li>
-                <li><hr className="dropdown-divider" /></li>
-                <li><a className="dropdown-item text-danger" href="#">Logout</a></li>
-              </ul>
-            </div>
-            <div className="input-group" style={{ width: "200px" }}>
-              <input type="text" className="form-control form-control-sm" placeholder="Search" />
-              <button className="btn btn-primary btn-sm">Search</button>
+    return (
+        <>
+        <nav className="navbar navbar-expand navbar-dark bg-primary health-navbar"> {/* ← CHANGE: "bg-primary" to your color e.g. "bg-dark" */}
+          <div className="container-fluid px-4">
+            <Link className="navbar-brand fw-semibold" to="/">
+              HealthPortal {/* ← CHANGE: "HealthPortal" to your project name */}
+            </Link>
+
+            <div className="navbar-nav ms-auto flex-row gap-3">
+              <Link className="nav-link" to="/">
+                Home {/* ← CHANGE: "Home" */}
+              </Link>
+
+              <Link className="nav-link" to="/doctors"> {/* ← CHANGE: "/doctors" */}
+                Doctors {/* ← CHANGE: "Doctors" */}
+              </Link>
+
+              <Link className="nav-link" to="/register"> {/* ← CHANGE: "/register" */}
+                Register {/* ← CHANGE: "Register" */}
+              </Link>
+
+              <Link className="nav-link" to="/contact"> {/* ← CHANGE: "/contact" */}
+                Contact {/* ← CHANGE: "Contact" */}
+              </Link>
             </div>
           </div>
-        </div>
-      </div>
-    </nav>
-  );
+        </nav>
+
+        <style>{`
+          .health-navbar {
+            min-height: 48px;
+          }
+
+          .health-navbar .navbar-brand,
+          .health-navbar .nav-link {
+            color: #fff;
+          }
+
+          .health-navbar .nav-link {
+            padding: 0.25rem 0.5rem;
+            transition: opacity 0.2s ease;
+          }
+
+          .health-navbar .nav-link:hover {
+            color: #fff;
+            opacity: 0.8;
+          }
+        `}</style>
+        </>
+    )
 }
-export default Navbar;
+
+export default Navbar
